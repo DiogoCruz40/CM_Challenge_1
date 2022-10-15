@@ -33,11 +33,6 @@ public class FragmentOne extends Fragment {
         return view;
     }
 
-    public void clickFrag2(View v)
-    {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.target_container, new FragmentTwo()).commit();
-    }
-
     private void initspinnerfooter(Spinner spinner, TextView owner, TextView name, TextView age, ImageView image) {
         SharedViewModel viewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         viewModel.getNames().observe(getViewLifecycleOwner(), names -> {
@@ -45,6 +40,11 @@ public class FragmentOne extends Fragment {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, names);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
+            if(getArguments() != null)
+            {
+                int pos = getArguments().getInt("position");
+                spinner.setSelection(pos);
+            }
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -61,4 +61,6 @@ public class FragmentOne extends Fragment {
             });
         });
     }
+
+
 }

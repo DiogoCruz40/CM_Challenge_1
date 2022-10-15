@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Spinner;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,4 +22,13 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.target_container, new FragmentOne())
                 .commit();
     }
+    public void clickFrag2(View view) {
+        int position = ((Spinner) findViewById(R.id.spinner)).getSelectedItemPosition();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",position);
+        FragmentTwo fragment2 = new FragmentTwo();
+        fragment2.setArguments(bundle);
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment2).commit();
+    }
+    
 }

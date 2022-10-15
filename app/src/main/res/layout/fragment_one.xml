@@ -94,7 +94,7 @@
         android:layout_marginStart="140dp"
         android:layout_marginTop="104dp"
         android:onClick="clickFrag2"
-        android:text="Fragment2"
+        android:text="@string/fragment2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
