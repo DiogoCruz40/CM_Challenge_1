@@ -1,16 +1,15 @@
 package pt.cm.challenge_1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ChangeFrag {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
         bundle.putInt("position",position);
         FragmentTwo fragment2 = new FragmentTwo();
         fragment2.setArguments(bundle);
-        this.getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment2).commit();
+        changefrag(fragment2);
+
     }
-    
+
+    @Override
+    public void changefrag(Fragment fragment) {
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment).commit();
+    }
 }

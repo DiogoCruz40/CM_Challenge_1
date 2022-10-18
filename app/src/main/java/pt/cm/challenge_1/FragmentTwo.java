@@ -1,5 +1,6 @@
 package pt.cm.challenge_1;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 public class FragmentTwo extends Fragment {
 
+    ChangeFrag changefrag;
     public FragmentTwo() {
         // Required empty public constructor
     }
@@ -20,7 +22,7 @@ public class FragmentTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        changefrag = (MainActivity) inflater.getContext();
         int position = getArguments().getInt("position");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_two, container, false);
@@ -39,7 +41,9 @@ public class FragmentTwo extends Fragment {
                     bundle.putInt("position",position);
                     FragmentOne fragment1 = new FragmentOne();
                     fragment1.setArguments(bundle);
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment1).commit();
+
+                    changefrag.changefrag(fragment1);
+//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment1).commit();
             }
         });
         return view;
