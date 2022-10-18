@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class FragmentTwo extends Fragment {
 
     ChangeFrag changefrag;
+
     public FragmentTwo() {
         // Required empty public constructor
     }
@@ -41,9 +42,7 @@ public class FragmentTwo extends Fragment {
                     bundle.putInt("position",position);
                     FragmentOne fragment1 = new FragmentOne();
                     fragment1.setArguments(bundle);
-
                     changefrag.changefrag(fragment1);
-//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.target_container, fragment1).commit();
             }
         });
         return view;
